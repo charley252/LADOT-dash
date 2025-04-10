@@ -4,3 +4,4 @@ matplotlib
 scikit-learn
 dash
 seaborn
+gunicorn
