@@ -14,7 +14,7 @@ server = app.server
 
 
 
-app.layout = html.Div(children=[html.H1(children='Hello World')])
+app.layout = html.Div("Hello from Dash on Heroku!")
 
 
 
