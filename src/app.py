@@ -14,7 +14,7 @@ server = app.server
 
 
 
-app.layout = html.Div("Hello from Dash on Heroku!")
+app.layout = html.Div("Dashboard coming soon!")
 
 
 
