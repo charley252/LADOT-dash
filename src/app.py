@@ -9,7 +9,8 @@ import plotly.express as px
 
 
 
-df = pd.read_csv('src/august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
+#df = pd.read_csv('src/august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
+df = pd.read_csv('august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
 df_r = df.reset_index()  # moves index into a column
 
 excluded_columns = ['Hour', '30Min', '1Min']
@@ -189,10 +190,23 @@ def update_figure(selected_day):
     fig6.update_layout(transition_duration=500)
     fig7.update_layout(transition_duration=500)
 
-    fig_map = px.scatter_map(selectedDay_df, lat="latitude", lon="longitude", color='DayofWeek', zoom=11, height=300)
+    map_center_df = selectedDay_df if not selectedDay_df.empty else df_r
+    fig_map = px.scatter_map(
+        selectedDay_df,
+        lat="latitude",
+        lon="longitude",
+        color='DayofWeek',
+        center={
+            "lat": map_center_df["latitude"].mean(),
+            "lon": map_center_df["longitude"].mean(),
+        },
+        zoom=11,
+        height=300,
+    )
     fig_map.update_layout(map_style="carto-positron")
     fig_map.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     fig_map.update_geos(fitbounds='locations')
+
 
     return fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig_map
 
