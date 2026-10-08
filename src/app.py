@@ -9,8 +9,8 @@ import plotly.express as px
 
 
 
-#df = pd.read_csv('src/august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
-df = pd.read_csv('august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
+df = pd.read_csv('src/august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
+#df = pd.read_csv('august_threeToseven_i_d_export.csv', index_col=0, parse_dates=True)
 df_r = df.reset_index()  # moves index into a column
 
 excluded_columns = ['Hour', '30Min', '1Min']
